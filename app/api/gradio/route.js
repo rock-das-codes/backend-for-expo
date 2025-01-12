@@ -2,14 +2,16 @@
 import { Client } from "@gradio/client";
 
 export async function POST(req) {
-  const { imageBlob, prompt } = await req.json();
+  const { imageBlob, prompts } = await req.json();
 
   try {
+    const response_0 = await fetch("https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png");
+const exampleImage = await response_0.blob();
     const client = await Client.connect("lllyasviel/iclight-v2");
     const result = await client.predict("/process", {
-      input_fg: imageBlob,
+      input_fg: exampleImage,
       bg_source: "None",
-      prompt:prompt,
+      prompt: prompts,
       image_width: 256,
       image_height: 256,
       num_samples: 1,
