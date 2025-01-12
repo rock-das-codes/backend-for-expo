@@ -9,7 +9,7 @@ export async function POST(req) {
     const result = await client.predict("/process", {
       input_fg: imageBlob,
       bg_source: "None",
-      prompt,
+      prompt:prompt,
       image_width: 256,
       image_height: 256,
       num_samples: 1,
