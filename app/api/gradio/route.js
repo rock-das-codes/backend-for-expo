@@ -1,7 +1,7 @@
 // app/api/processImage/route.js (for app directory in Next.js)
 import { Client } from "@gradio/client";
 
-export default async function POST(req){
+export async function POST(req){
   
   const { imageBlob, prompts } = req.json();
 
