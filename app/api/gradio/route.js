@@ -1,8 +1,12 @@
 // app/api/processImage/route.js (for app directory in Next.js)
 import { Client } from "@gradio/client";
 
-export async function POST(req) {
-  const { imageBlob, prompts } = await req.json();
+export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    res.status(405).json({ error: "Method not allowed" });
+    return;
+  }
+  const { imageBlob, prompt } = req.body;
 
   try {
     const response_0 = await fetch("https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png");
