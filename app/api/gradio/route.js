@@ -1,10 +1,9 @@
 // app/api/processImage/route.js (for app directory in Next.js)
 import { Client } from "@gradio/client";
 
-export default async function handler(req, res) {
+export async function POST(req) {
   if (req.method !== "POST") {
-    res.status(405).json({ error: "Method not allowed" });
-    return;
+    return new Response(JSON.stringify({ error: "Method not allowed" }), { status: 405 });
   }
   const { imageBlob, prompt } = req.body;
 
