@@ -1,7 +1,7 @@
 // app/api/processImage/route.js (for app directory in Next.js)
 import { Client } from "@gradio/client";
 
-export async function POST(req) {
+export default async function POST(req){
   
   const { imageBlob, prompts } = req.json();
 
@@ -32,6 +32,6 @@ const exampleImage = await response_0.blob();
     });
   }
 }
-export async function GET(req) {
-  return new Response(JSON.stringify({ message: "API is working!" }), { status: 200 });
-}
+// export async function GET(req) {
+//   return new Response(JSON.stringify({ message: "API is working!" }), { status: 200 });
+// }
