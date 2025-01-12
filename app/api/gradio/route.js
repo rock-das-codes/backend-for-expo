@@ -2,12 +2,10 @@
 import { Client } from "@gradio/client";
 import { NextResponse } from "next/server";
 export async function POST(request) {
-    const { name, age } = await request.json();
+    const name = await request.json();
     // Process the data (e.g., save to a database, perform some logic)
-    const response = {
-        message: `Received name: ${name}, age: ${age}`
-    };
-    return NextResponse.json(response);
+    
+    return name;
 }
 // export async function POST(req){
   
