@@ -5,7 +5,7 @@ export async function POST(req) {
   if (req.method !== "POST") {
     return new Response(JSON.stringify({ error: "Method not allowed" }), { status: 405 });
   }
-  const { imageBlob, prompt } = req.body;
+  const { imageBlob, prompts } = req.json();
 
   try {
     const response_0 = await fetch("https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png");
